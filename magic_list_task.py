@@ -1,25 +1,4 @@
-# # This is a sample Python script.
-#
-# # Press ⌃R to execute it or replace it with your code.
-# # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-#
-#
-# def print_hi(name):
-#     # Use a breakpoint in the code line below to debug your script.
-#     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-#
-#
-# # Press the green button in the gutter to run the script.
-# if __name__ == '__main__':
-#     print_hi('PyCharm')
-#
-# # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 from dataclasses import dataclass
-
-
-@dataclass
-class Person:
-    age: int = 1
 
 
 class MagicList(list):
@@ -44,17 +23,25 @@ class MagicList(list):
             super(MagicList, self).__setitem__(key, item)
 
 
+# MagicList usage:
+# ----------------
+
+@dataclass
+class Person:
+    age: int = 1
+
+
 def test_magic_class():
     person_list = MagicList(cls_type=Person)
 
     person_list[0].age = 6
-    print(person_list)
+    print('MagicList of Person, with one person at age 6:', person_list)
     person_list[1] = Person
-    print(person_list)
+    print('MagicList of Person, with another person at default age (1):', person_list)
 
-    int_list = MagicList()
-    int_list[0] = 7
-    print(int_list)
+    objects_list = MagicList()
+    objects_list[0] = 7
+    print('MagicList with one int with value of 7:', objects_list)
 
 
 def test_enforcing_index_continuity():
